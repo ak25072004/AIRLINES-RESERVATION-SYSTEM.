@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Flights</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header><h1>Available Flights</h1></header>
+<div class="flight-container">
+    {% for f in flights %}
+    <div class="flight-card">
+        <h3>{{ f.flight_name }}</h3>
+        <p><b>From:</b> {{ f.source }} → <b>To:</b> {{ f.destination }}</p>
+        <p>Departure: {{ f.departure }} | Arrival: {{ f.arrival }}</p>
+        <p>Price: ₹{{ f.price }}</p>
+        <a href="/book/{{ f.id }}" class="btn">Book Now</a>
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
